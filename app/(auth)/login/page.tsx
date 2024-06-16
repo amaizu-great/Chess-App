@@ -14,7 +14,7 @@ const Login = () => {
     );
   };
 
-  const loginWithGoogleButton = () => {
+  const LoginWithGoogleButton = () => {
     return (
       <button className="flex">
         <Image src={Google} alt={`${Google} icon`} />
@@ -64,7 +64,7 @@ const Login = () => {
 
         <LoginEmailAndPasswordButton />
 
-        <loginWithGoogleButton />
+        <LoginWithGoogleButton />
       </form>
     </main>
   );
