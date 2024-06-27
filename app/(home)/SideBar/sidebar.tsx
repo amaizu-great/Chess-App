@@ -1,6 +1,8 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import Theme from "./components/Theme ";
+import { signOut } from "next-auth/react";
 import Pawn from "../../../public/pawn.png";
 import Friends from "../../../public/add-user.png";
 import Binocular from "../../../public/binoculars.png";
@@ -58,6 +60,18 @@ const Sidebar = () => {
         ></Image>
         <p className="pr-4">Account</p>
       </Link>
+
+      <button
+        onClick={() => signOut()}
+        className="flex gap-3 items-center py-4 pl-7 pr-12 transition hover:bg-gray-700 hover:text-gray-100 dark:hover:bg-gray-100 dark:hover:text-gray-700"
+      >
+        <Image
+          src={Pawn}
+          alt="HandWithPawn"
+          className="size-[30px] rounded"
+        ></Image>
+        <p className="pr-4 min-w-fit">Log Out</p>
+      </button>
     </header>
   );
 };
