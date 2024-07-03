@@ -1,6 +1,6 @@
 import dataSource from "@/lib/typeorm";
 import { NextResponse } from "next/server";
-import { User } from "../../../entities/user";
+import { User } from "../../../../entities/user";
 
 // Ensure the data source is initialized
 const initDataSource = async () => {
@@ -21,6 +21,7 @@ export async function POST(req: Request) {
     newUser.name = name;
     newUser.email = email;
     newUser.password = password;
+    newUser.Games = {}
 
     await initDataSource();
     const userRepository = dataSource.getRepository(User);
@@ -38,25 +39,25 @@ export async function POST(req: Request) {
         } else if (userExist.password === password) {
           result = userExist;
         } else {
-          result = { Error: "Invalid Password" };
+          result = null;
         }
       } else {
-        result = { Error: "This Email doesn't Have an account with us" };
+        result = null;
       }
       return result;
     };
+
     const handleSignUp = async () => {
       let result;
       if (!userExist) {
         result = await userRepository.save(newUser);
       } else {
-        throw new Error("This Email Already Have an account with us");
+        result = null;
       }
       return result;
     };
 
     if (name) {
-      console.log("sign up");
       const res = await handleSignUp();
       return NextResponse.json(res);
     } else {

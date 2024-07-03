@@ -1,6 +1,6 @@
 import dataSource from "@/lib/typeorm";
 import { NextResponse } from "next/server";
-import { User } from "../../../entities/user";
+import { User } from "../../../../entities/user";
 
 // Ensure the data source is initialized
 const initDataSource = async () => {
@@ -21,6 +21,7 @@ export async function POST(req: Request) {
     newUser.name = name;
     newUser.email = email;
     newUser.password = "";
+    newUser.Games = {}
 
     await initDataSource();
     const userRepository = dataSource.getRepository(User);

@@ -12,7 +12,7 @@ const Sidebar = () => {
   return (
     <header className="flex flex-col w-fit h-screen py-10 bg-gray-300 font-medium dark:bg-[#262522] text-gray-700 dark:text-gray-100">
       <Link
-        href="/play"
+        href="/hostgame"
         className="flex gap-3 items-center py-4 pl-7 pr-12 transition hover:bg-gray-700 hover:text-gray-100 dark:hover:bg-gray-100 dark:hover:text-gray-700"
       >
         <Image

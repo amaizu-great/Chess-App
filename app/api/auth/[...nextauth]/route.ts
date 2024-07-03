@@ -28,7 +28,7 @@ const authOptions = {
         },
       },
       authorize: async (credentials) => {
-        const res = await fetch("http://localhost:3000/api/credentials", {
+        const res = await fetch("http://localhost:3000/api/auth/UserCredentials", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const authOptions = {
       if (account.provider === "google") {
         const { name, email } = user;
         try {
-          const res = await fetch("http://localhost:3000/api/user", {
+          const res = await fetch("http://localhost:3000/api/auth/GoogleAcc", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

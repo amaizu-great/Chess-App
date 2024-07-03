@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Join from "./components/joinmacth/join";
-import Host from "./components/hostmacth/host";
+import Join from "./components/joinmacthbutton/join";
+import Host from "./components/hostmacthbutton/host";
 import chessboard from "../../../public/chessboard.png";
 
 const Play = () => {

@@ -10,8 +10,8 @@ import { Lock1, Message, UserAdd } from "iconsax-react";
 const SignUp = () => {
   const { status } = useSession();
 
+  let [name, setName] = useState("");
   let [email, setEmail] = useState("");
-  let [fullName, setFullName] = useState("");
   let [password, setPassword] = useState("");
 
   //redirect function thats protects this routes from users that are signed in
@@ -45,7 +45,16 @@ const SignUp = () => {
       <div className="flex flex-col w-full max-w-[450px] items-center">
         <p>Logo</p>
 
-        <form className="flex flex-col w-full bg-gray-300 gap-5 font-medium p-8 rounded-t dark:bg-[#262522]">
+        <form 
+          onSubmit={(e) => {
+            e.preventDefault();
+            signIn("credentials", {
+              redirect: false, // Set to false to handle response locally
+              name,
+              email,
+              password,
+            });
+          }}className="flex flex-col w-full bg-gray-300 gap-5 font-medium p-8 rounded-t dark:bg-[#262522]">
           <label
             htmlFor="UserName"
             className="flex rounded bg-white dark:bg-[#3c3a38] items-center pl-3"
@@ -56,10 +65,10 @@ const SignUp = () => {
               id="UserName"
               required={true}
               name="UserName"
-              value={fullName}
+              value={name}
               placeholder="Full Name"
               onChange={(e: any) => {
-                setFullName(e.target.value);
+                setName(e.target.value);
               }}
               className="w-full px-4 py-3 bg-transparent rounded outline-none dark:placeholder:text-white"
             />
